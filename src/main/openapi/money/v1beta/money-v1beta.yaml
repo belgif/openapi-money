@@ -31,3 +31,26 @@ components:
       #   country code (2 letters - ISO 3166-1 alpha-2)
       #   location code (2 alphanumeric characters)
       #   optional branch code (3 alphanumeric characters)
+    Currency: # do we add Code suffix?
+      description: A currency represented by its ISO 4217 alpha code
+      type: string
+      pattern: "^[A-Z]{3}$"
+      example: "EUR"
+    MonetaryAmount:
+      description: A monetary value
+      type: object
+      properties:
+        value:
+          "$ref": "#/components/schemas/Decimal"
+        currency:
+          "$ref": "#/components/schemas/Currency"
+      required: [value, currency]
+      example:
+        value: "0.01"
+        currency: "EUR"
+    Decimal: # TODO: move to openapi-common. Pending validation of decimal representation https://github.com/belgif/rest-guide/issues/79
+      type: string
+      format: decimal # decimal is a custom format only supported in some tooling
+      pattern: '^(\-|\+)?((\d+(\.\d*)?)|(\.\d+))$'  # based on BigDecimal without exponent support. At least one digit required, before or after comma
+      example: "-100.234567"
+      # other valid examples:  "010", "-.05", "+1", "10", "100." 
