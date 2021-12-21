@@ -13,7 +13,6 @@ components:
     EuroCentAmount:
       description: 'Money amount in eurocents, also allows negative amounts.'
       type: integer # representation as EuroCent instead of Euro to avoid floating point rounding problems and need for unofficial decimal format
-    #TODO: add international money/currency types? decimals are not well supported cfr https://opensource.zalando.com/restful-api-guidelines/#common-data-types
     Iban:
       description: 'International Bank Account Number, as defined in ISO 13616:2007'
       type: string
@@ -31,7 +30,7 @@ components:
       #   country code (2 letters - ISO 3166-1 alpha-2)
       #   location code (2 alphanumeric characters)
       #   optional branch code (3 alphanumeric characters)
-    Currency: # do we add Code suffix?
+    Currency:
       description: A currency represented by its ISO 4217 alpha code
       type: string
       pattern: "^[A-Z]{3}$"
