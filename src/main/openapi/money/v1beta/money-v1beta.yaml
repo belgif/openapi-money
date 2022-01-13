@@ -40,16 +40,21 @@ components:
       type: object
       properties:
         value:
-          "$ref": "#/components/schemas/Decimal"
+          "$ref": "#/components/schemas/MonetaryValue"
         currency:
           "$ref": "#/components/schemas/Currency"
       required: [value, currency]
       example:
         value: "0.01"
         currency: "EUR"
-    Decimal: # TODO: move to openapi-common. Pending validation of decimal representation https://github.com/belgif/rest-guide/issues/79
+    MonetaryValue:
       type: string
-      format: decimal # decimal is a custom format only supported in some tooling
-      pattern: '^(\-|\+)?((\d+(\.\d*)?)|(\.\d+))$'  # based on BigDecimal without exponent support. At least one digit required, before or after comma
-      example: "-100.234567"
-      # other valid examples:  "010", "-.05", "+1", "10", "100." 
+      format: number # number is a custom format that may not be supported by all tooling
+      pattern: '^(\-|\+)?((\d+(\.\d*)?)|(\.\d+))$'  # Variable number of digits, with at least one digit required, before or after the decimal point. Allows both positive and negative values.
+      x-examples:
+      - "100.234567"
+      - "010"
+      - "-.05"
+      - "+1"
+      - "10"
+      - "100." 
