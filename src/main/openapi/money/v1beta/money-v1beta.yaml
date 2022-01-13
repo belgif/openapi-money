@@ -7,12 +7,12 @@ paths: {}
 components:
   schemas:
     EuroCentPositiveAmount:
-      description: Money amount in eurocents >= 0
-      type: integer # representation as EuroCent instead of Euro to avoid floating point rounding problems and need for unofficial decimal format
+      description: Money amount in Euro cents >= 0
+      type: integer # representation as Euro cent instead of Euro to avoid floating point rounding problems and need for custom 'number' format
       minimum: 0
     EuroCentAmount:
-      description: 'Money amount in eurocents, also allows negative amounts.'
-      type: integer # representation as EuroCent instead of Euro to avoid floating point rounding problems and need for unofficial decimal format
+      description: 'Money amount in Euro cents, also allows negative amounts.'
+      type: integer # representation as Euro cent instead of Euro to avoid floating point rounding problems and need for custom 'number' format
     Iban:
       description: 'International Bank Account Number, as defined in ISO 13616:2007'
       type: string
@@ -36,7 +36,7 @@ components:
       pattern: "^[A-Z]{3}$"
       example: "EUR"
     MonetaryAmount:
-      description: A monetary value
+      description: A monetary amount
       type: object
       properties:
         value:
@@ -49,7 +49,7 @@ components:
         currency: "EUR"
     MonetaryValue:
       type: string
-      format: number # number is a custom format that may not be supported by all tooling
+      format: number # number is a custom string format that is supported by some, but not all tooling
       pattern: '^(\-|\+)?((\d+(\.\d*)?)|(\.\d+))$'  # Variable number of digits, with at least one digit required, before or after the decimal point. Allows both positive and negative values.
       x-examples:
       - "100.234567"
