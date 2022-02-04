@@ -48,7 +48,8 @@ components:
         value: "0.01"
         currency: "EUR"
     MonetaryValue:
-      type: string
+      description: The numerical part of a monetary amount in decimal notation. Negative values are allowed.
+      type: string   # string conserves decimal precision
       format: number # number is a custom string format that is supported by some, but not all tooling
       pattern: '^(\-|\+)?((\d+(\.\d*)?)|(\.\d+))$'  # Variable number of digits, with at least one digit required, before or after the decimal point. Allows both positive and negative values.
       x-examples:
