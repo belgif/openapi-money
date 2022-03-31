@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   title: data types for money
-  version: ${project.version}-beta
+  version: ${project.version}
 paths: {}
 definitions:
   EuroCentPositiveAmount:
