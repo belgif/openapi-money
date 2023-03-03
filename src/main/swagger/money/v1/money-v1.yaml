@@ -56,4 +56,15 @@ definitions:
     - "-.05"
     - "+1"
     - "10"
-    - "100." 
+    - "100."
+  BelgianRemittanceInformationUnstructured:
+    description: Unstructured Remittance Information as supported by Belgian banks
+    type: string
+    maxLength: 140
+  BelgianRemittanceInformationStructured:
+    description: Structured Remittance Information in the Belgian OGM-VCS format
+    type: string
+    pattern: "^\\d{12}$"
+    example: "010806817183"
+    # Often formatted for display as +++ 3 digits / 4 digits / 5 digits / +++ (example: +++010/8068/17183+++)
+    # The last 2 digits are check digits (modulo 97) of the first 10 digits, but if the result is 0, then the check digits are 97
