@@ -62,8 +62,14 @@ components:
     BelgianRemittanceInformation:
       description: Remittance Information for credit transfers as supported by Belgian banks
       oneOf:
-        - $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
-        - $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
+        - type: object
+          properties:
+            unstructured:
+              $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
+        - type: object
+          properties:
+            structured:
+              $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
     BelgianRemittanceInformationUnstructured:
       description: Unstructured Remittance Information as supported by Belgian banks
       type: string

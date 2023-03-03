@@ -57,6 +57,15 @@ definitions:
     - "+1"
     - "10"
     - "100."
+  BelgianRemittanceInformation:
+    description: Remittance Information for credit transfers as supported by Belgian banks.
+      Only one of `unstructured` or `structured` fields should be used.
+    type: object
+    properties:
+      unstructured:
+        $ref: "#/definitions/BelgianRemittanceInformationUnstructured"
+      structured:
+        $ref: "#/definitions/BelgianRemittanceInformationStructured"
   BelgianRemittanceInformationUnstructured:
     description: Unstructured Remittance Information as supported by Belgian banks
     type: string
