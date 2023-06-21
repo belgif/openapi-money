@@ -60,16 +60,14 @@ components:
       - "10"
       - "100." 
     BelgianRemittanceInformation:
-      description: Remittance Information for credit transfers as supported by Belgian banks
-      oneOf:
-        - type: object
-          properties:
-            unstructured:
-              $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
-        - type: object
-          properties:
-            structured:
-              $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
+      description: Remittance Information for credit transfers as supported by Belgian banks.
+        Only one of `unstructured` or `structured` fields should be used.
+      type: object
+      properties:
+        unstructured:
+          $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
+        structured:
+          $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
     BelgianRemittanceInformationUnstructured:
       description: Unstructured Remittance Information as supported by Belgian banks
       type: string
