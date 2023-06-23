@@ -68,6 +68,8 @@ components:
           $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
         structured:
           $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
+      minProperties: 1
+      maxProperties: 1
     BelgianRemittanceInformationUnstructured:
       description: Unstructured Remittance Information as supported by Belgian banks
       type: string

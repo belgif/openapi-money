@@ -66,6 +66,8 @@ definitions:
         $ref: "#/definitions/BelgianRemittanceInformationUnstructured"
       structured:
         $ref: "#/definitions/BelgianRemittanceInformationStructured"
+      minProperties: 1
+      maxProperties: 1
   BelgianRemittanceInformationUnstructured:
     description: Unstructured Remittance Information as supported by Belgian banks
     type: string
