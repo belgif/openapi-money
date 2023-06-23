@@ -31,7 +31,13 @@ definitions:
     #   country code (2 letters - ISO 3166-1 alpha-2)
     #   location code (2 alphanumeric characters)
     #   optional branch code (3 alphanumeric characters)
+  CurrencyCode:
+    description: A currency represented by its ISO 4217 alpha code
+    type: string
+    pattern: "^[A-Z]{3}$"
+    example: "EUR"
   Currency:
+    x-deprecated: true # use CurrencyCode instead
     description: A currency represented by its ISO 4217 alpha code
     type: string
     pattern: "^[A-Z]{3}$"
@@ -43,7 +49,7 @@ definitions:
       value:
         "$ref": "#/definitions/MonetaryValue"
       currency:
-        "$ref": "#/definitions/Currency"
+        "$ref": "#/definitions/CurrencyCode"
     required: [value, currency]
     example:
       value: "0.01"
