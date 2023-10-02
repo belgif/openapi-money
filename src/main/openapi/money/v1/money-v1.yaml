@@ -68,3 +68,25 @@ components:
       - "+1"
       - "10"
       - "100." 
+    BelgianRemittanceInformation:
+      description: Information provided with a remittance meant for its beneficiary, in the format supported by Belgian banks.
+        Only one of `unstructured` or `structured` fields should be used.
+      type: object
+      properties:
+        unstructured:
+          $ref: "#/components/schemas/BelgianRemittanceInformationUnstructured"
+        structured:
+          $ref: "#/components/schemas/BelgianRemittanceInformationStructured"
+      oneOf:
+        - required: [unstructured]
+        - required: [structured]
+    BelgianRemittanceInformationUnstructured:
+      description: Unstructured Remittance Information as supported by Belgian banks
+      type: string
+      maxLength: 140
+    BelgianRemittanceInformationStructured:
+      description: Structured Remittance Information in the Belgian OGM-VCS format. Often formatted for display as +++ 3 digits / 4 digits / 5 digits / +++.
+      type: string
+      pattern: "^\\d{12}$"
+      example: "010806817183"   # Example formatted for display: +++010/8068/17183+++
+      # The last 2 digits are check digits (modulo 97) of the first 10 digits, but if the result is 0, then the check digits are 97
